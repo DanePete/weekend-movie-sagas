@@ -15,7 +15,7 @@ function MovieList() {
 
     const imageClick = (id, title, poster) => {
         console.log('got here', id);
-        dispatch({ type: 'FETCH_INDIVIDUAL', payload: {id: id, title: title, poster: poster } });
+        
         history.push('/details');
     }
 
