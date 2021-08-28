@@ -7,6 +7,7 @@ import AddMovie from '../AddMovie/AddMovie';
 function App() {
   return (
     <div className="App">
+      <div className="bg"></div>
       <h1>The Movies Saga!</h1>
       <Router>        
         <Route path="/" exact>

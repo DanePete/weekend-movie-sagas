@@ -25,10 +25,14 @@ function MovieList() {
             <div class="row equal">
                 {movies.map(movie => {
                     return (
-                        <div class="col-sm-4 d-flex pb-5">
+                        <div class="col-sm-2 d-flex pb-4">
                             <div key={movie.id} className="card card-inverse card-danger">
-                                <h3>{movie.title}</h3>
-                                <img src={movie.poster} alt={movie.title} onClick={() => imageClick(movie.id, movie.title, movie.poster)}/>
+                                <img className="card-img-top" alt="Card image cap" src={movie.poster} alt={movie.title} onClick={() => imageClick(movie.id, movie.title, movie.poster)}/>
+                                <div className="card-body">
+                                    <p className="card-text">
+                                        {movie.title}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     );
