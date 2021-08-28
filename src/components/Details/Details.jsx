@@ -6,18 +6,19 @@ import {useParams} from'react-router-dom';
 function Details() {
 
     const dispatch = useDispatch();
-    dispatch({ type: 'FETCH_INDIVIDUAL', payload: {} });
-    // const genres = useSelector(store => store.genres);
-    // console.log('genres', genres);
+    let movieId = useParams();
 
-    // let ourId = useParams();
-
-    // console.log('our id', ourId);
-    // dispatch({ type: 'FETCH_INDIVIDUAL', payload: {id: id, title: title, poster: poster } });
+    console.log('our id', movieId.id);
     
-    // useEffect(() => {
-    //     dispatch({ type: 'FETCH_MOVIES' });
-    // }, []);
+    // dispatch({ type: 'FETCH_INDIVIDUAL', payload: {} });
+    const genres = useSelector(store => store.genres);
+    console.log('genres', genres);
+
+
+    
+    useEffect(() => {
+        dispatch({ type: 'FETCH_INDIVIDUAL', payload: movieId.id });
+    }, []);
 
     return (
         <>

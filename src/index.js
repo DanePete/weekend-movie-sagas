@@ -18,9 +18,11 @@ function* rootSaga() {
     // yield takeEvery('CREATE_NEW_SEARCH', getGiph)
 }
 
-function* fetchMovie() {
+function* fetchMovie(action) {
     try {
+        console.log('got here');
         const genre = yield axios.get('/api/genre');
+        console.log('genre payload', action.payload);
         yield put({ type: 'SET_GENRES', payload: genre.data });
     } catch {
         console.log('damn it');

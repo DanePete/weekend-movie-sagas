@@ -3,7 +3,8 @@ const router = express.Router();
 const pool = require('../modules/pool')
 
 router.get('/', (req, res) => {
-  // Add query to get all genres
+  const movieId = req.query;
+  console.log('this is our movie id', movieId);
   const query = `
     SELECT "genres"."name"
     FROM "movies"
@@ -16,7 +17,7 @@ router.get('/', (req, res) => {
   pool.query(query)
     .then( result => {
       console.log('results', result.rows);
-      // res.send(result.rows);
+      res.send(result.rows);
     })
     .catch(err => {
       console.log('nay :(');
