@@ -21,16 +21,18 @@ function MovieList() {
     return (
         <main>
             <h1>MovieList</h1>
-            <section className="movies">
+            <div class="row equal">
                 {movies.map(movie => {
                     return (
-                        <div key={movie.id} >
-                            <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title} onClick={() => imageClick()}/>
+                        <div class="col-sm-4 d-flex pb-5">
+                            <div key={movie.id} className="card card-inverse card-danger">
+                                <h3>{movie.title}</h3>
+                                <img src={movie.poster} alt={movie.title} onClick={() => imageClick()}/>
+                            </div>
                         </div>
                     );
                 })}
-            </section>
+            </div>
         </main>
 
     );
