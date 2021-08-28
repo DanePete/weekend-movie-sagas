@@ -5,8 +5,8 @@ import './details.css'
 function Details() {
 
     const dispatch = useDispatch();
-    const movies = useSelector(store => store.movies);
-
+    const genres = useSelector(store => store.genres);
+    console.log('genres', genres);
     // useEffect(() => {
     //     dispatch({ type: 'FETCH_MOVIES' });
     // }, []);
