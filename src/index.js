@@ -15,6 +15,7 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_INDIVIDUAL', fetchMovie);
+    // yield takeEvery('CREATE_NEW_SEARCH', getGiph)
 }
 
 function* fetchMovie() {

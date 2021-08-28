@@ -14,9 +14,7 @@ function MovieList() {
     }, []);
 
     const imageClick = (id, title, poster) => {
-        console.log('got here', id);
-        
-        history.push('/details');
+        history.push(`/details/${id}`);
     }
 
     console.log('movies',movies);

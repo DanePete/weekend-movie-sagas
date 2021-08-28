@@ -3,31 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import './AddMovie.css'
 
 function AddMovie() {
-
-    // const dispatch = useDispatch();
-    // const genres = useSelector(store => store.genres);
-    // console.log('genres', genres, 'id', id);
-
-    // dispatch({ type: 'FETCH_INDIVIDUAL', payload: {id: id, title: title, poster: poster } });
-    // useEffect(() => {
-    //     dispatch({ type: 'FETCH_MOVIES' });
-    // }, []);
     const dispatch = useDispatch();
-    const [newSearch, setNewSearch] = useState('')
-
+    const [movie, addMovie] = useState('')
 
     const handleSubmit = event => {
         event.preventDefault();
-        console.log('got here?!');
-        console.log('Add new search', newSearch);
 
-        setNewSearch({
+        addMovie({
             search_query: ''
         })
 
         dispatch({
-            type: 'CREATE_NEW_SEARCH',
-            payload: newSearch
+            type: 'POST_MOVIE',
+            payload: movie
         })
     };
 
@@ -37,8 +25,8 @@ function AddMovie() {
             <input
                 required
                 placeholder="Search for Something"
-                value={newSearch.search_query}
-                onChange={(event) => setNewSearch(
+                value={movie.search_query}
+                onChange={(event) => addMovie(
                     event.target.value
                 )}
             />
