@@ -19,12 +19,9 @@ function* rootSaga() {
 }
 
 function* fetchMovie() {
-    console.log('fetch that movie doogg');
     try {
         const genre = yield axios.get('/api/genre');
-        console.log('get all the stuff', genre);
         yield put({ type: 'SET_GENRES', payload: genre.data });
-
     } catch {
         console.log('damn it');
         console.log('get all error');
@@ -61,7 +58,7 @@ const movies = (state = [], action) => {
 const genres = (state = [], action) => {
     switch (action.type) {
         case 'SET_GENRES':
-            console.log('got in here to genres state store');
+            console.log('got in here to genres state store', action.payload);
             return action.payload;
         default:
             return state;
