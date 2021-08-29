@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './AddMovie.css'
 
@@ -7,6 +7,14 @@ function AddMovie() {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [poster, setPoster] = useState('')
+    const [genre, setGenre] = useState(0);
+    const genres = useSelector(store => store.genres);
+    console.log('genre ya', genre);
+    useEffect(() => {
+        // dispatch({ type: 'FETCH_INDIVIDUAL_GENRES', payload: movieId.id });
+        dispatch({ type: 'FETCH_MOVIE_GENRES'});
+    }, []);
+
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -17,7 +25,7 @@ function AddMovie() {
 
         dispatch({
             type: 'ADD_MOVIE',
-            payload: {title: title, poster: poster, description: description}
+            payload: {title: title, poster: poster, description: description, genre: genre}
         })
     };
 
@@ -49,12 +57,22 @@ function AddMovie() {
                 )}
             />
 
-            {/* <textarea/> */}
+            <select
+                required
+                onChange={(event) => setGenre(
+                    event.target.value
+                )}
+            >
+                {genres?.map((genre, index) => {
+                    return (
+                        <option value={index += 1}>{genre.name}</option>
+                    );  
+                })} 
+            </select>
             
-        {/* <input type="submit" value="search" /> */}
-        <button type="submit">
-          Search
-        </button>
+            <button type="submit">
+            Add Movie
+            </button>
         </form>
     );
 }

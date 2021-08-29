@@ -15,11 +15,10 @@ function MovieList() {
 
     const imageClick = (id, title, poster) => {
         // dispatch({ type: 'FETCH_INDIVIDUAL_GENRES', payload: id });
-        dispatch({ type: 'FETCH_MOVIE_GENRES', payload: {id: id} });
+        dispatch({ type: 'FETCH_MOVIE_DETAILS', payload: {id: id} });
+        // dispatch({ type: 'FETCH_MOVIE_GENRES', payload: {id: id} });
         history.push(`/details/${id}`);
     }
-
-    console.log('movies',movies);
 
     return (
         <main>
