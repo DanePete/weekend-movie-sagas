@@ -14,6 +14,7 @@ function Details() {
     const goBackHome = () => {
         history.push('/');
     }
+    
     useEffect(() => {
         dispatch({ type: 'FETCH_INDIVIDUAL_GENRES', payload: {id: movieId.id}});
     }, []);
