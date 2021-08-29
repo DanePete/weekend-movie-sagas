@@ -4,18 +4,20 @@ import './AddMovie.css'
 
 function AddMovie() {
     const dispatch = useDispatch();
-    const [movie, addMovie] = useState('')
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
+    const [poster, setPoster] = useState('')
 
     const handleSubmit = event => {
         event.preventDefault();
 
-        addMovie({
-            search_query: ''
-        })
+        // addMovie({
+        //     search_query: ''
+        // })
 
         dispatch({
-            type: 'POST_MOVIE',
-            payload: movie
+            type: 'ADD_MOVIE',
+            payload: {title: title, poster: poster, description: description}
         })
     };
 
@@ -25,12 +27,28 @@ function AddMovie() {
             <input
                 required
                 placeholder="Search for Something"
-                value={movie.search_query}
-                onChange={(event) => addMovie(
+                value={title.search_query}
+                onChange={(event) => setTitle(
                     event.target.value
                 )}
             />
-          
+                <input
+                required
+                placeholder="Search for Something"
+                value={poster.search_query}
+                onChange={(event) => setPoster(
+                    event.target.value
+                )}
+            />
+            <textarea
+                required
+                placeholder="Search for Something"
+                value={description.search_query}
+                onChange={(event) => setDescription(
+                    event.target.value
+                )}
+            />
+
             {/* <textarea/> */}
             
         {/* <input type="submit" value="search" /> */}

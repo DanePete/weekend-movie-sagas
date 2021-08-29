@@ -14,11 +14,11 @@ function MovieList() {
     }, []);
 
     const imageClick = (id, title, poster) => {
-        history.push(`/details/${id}`);
+        // dispatch({ type: 'FETCH_INDIVIDUAL_GENRES', payload: id });
+        dispatch({ type: 'FETCH_INDIVIDUAL', payload: {id: id, title: title, poster:poster} });
+        history.push(`/details`);
     }
-
-    console.log('movies',movies);
-
+    
     return (
         <main>
             <h1>MovieList</h1>
@@ -27,7 +27,13 @@ function MovieList() {
                     return (
                         <div class="col-sm-2 d-flex pb-4">
                             <div key={movie.id} className="card card-inverse card-danger">
-                                <img className="card-img-top" alt="Card image cap" src={movie.poster} alt={movie.title} onClick={() => imageClick(movie.id, movie.title, movie.poster)}/>
+                                <img 
+                                    className="card-img-top" 
+                                    alt="Card image cap" 
+                                    src={movie.poster}
+                                    onClick={() => imageClick(
+                                                        movie.id, movie.title, movie.poster
+                                                    )}/>
                                 <div className="card-body">
                                     <p className="card-text">
                                         {movie.title}

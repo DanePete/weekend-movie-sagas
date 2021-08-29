@@ -15,7 +15,7 @@ function App() {
         </Route>
 
         {/* Details page */}
-        <Route path="/details/:id">
+        <Route path="/details">
           <Details />
         </Route>
 
