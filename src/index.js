@@ -22,7 +22,7 @@ function* rootSaga() {
 
 function* fetchMovie(action) {
     try {
-        const movieDetails = yield axios.get(`/api/genre/${action.payload}`, {params: {id: action.payload.id}});
+        const movieDetails = yield axios.get(`/api/movie/${action.payload}`, {params: {id: action.payload.id}});
         console.log('this is our movie details', movieDetails);
         yield put({ type: 'SET_MOVIE_DETAILS', payload: movieDetails });
     } catch {
