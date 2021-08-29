@@ -27,11 +27,7 @@ router.post('/', (req, res) => {
   // FIRST QUERY MAKES MOVIE
   pool.query(insertMovieQuery, [req.body.title, req.body.poster, req.body.description])
   .then(result => {
-    console.log('New Movie Id:', result.rows[0].id); //ID IS HERE!
-    
     const createdMovieId = result.rows[0].id
-    console.log('create movie id', createdMovieId);
-
     // Now handle the genre reference
     const insertMovieGenreQuery = `
       INSERT INTO "movies_genres" ("movie_id", "genre_id")
