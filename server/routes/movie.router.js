@@ -15,13 +15,13 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  const movieId = req;
-  console.log('movie id is', movieId);
+  const movieId = req.query.id;
+  console.log('movie id', movieId);
   const query = `
       SELECT * FROM movies
-      WHERE "movies".id = 1`
+      WHERE "movies".id = $1`
     ;
-  pool.query(query)
+  pool.query(query, [movieId])
     .then( result => {
       res.send(result.rows);
     })

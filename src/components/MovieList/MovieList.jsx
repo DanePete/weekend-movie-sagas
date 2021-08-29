@@ -13,8 +13,9 @@ function MovieList() {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
-    const imageClick = (id, title, poster) => {
-        dispatch({ type: 'FETCH_MOVIE_DETAILS', payload: {id: id} });
+    const imageClick = (id) => {
+        console.log('the image click id is', id);
+        dispatch({ type: 'FETCH_MOVIE_DETAILS', payload: {id: id}});
         history.push(`/details/${id}`);
     }
 
