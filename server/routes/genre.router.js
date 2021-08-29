@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
   const movieId = req.query;
-  console.log('this is our movie id', movieId);
+  console.log('movie id is', movieId);
   const query = `
     SELECT "genres"."name", "movies".title, "movies".description,  "movies".poster
     FROM "movies"
@@ -16,14 +16,22 @@ router.get('/', (req, res) => {
     ;
   pool.query(query)
     .then( result => {
-      console.log('results', result.rows);
       res.send(result.rows);
     })
     .catch(err => {
-      console.log('nay :(');
       console.log('ERROR: Get all movies GENRE', err);
       res.sendStatus(500)
     })
+});
+
+router.get('/', (req, res) => {
+  const sqlQuery = `SELECT "name" FROM "genres"`
+  pool.query(sqlQuery).then(dbRes => {
+    res.send(dbRes.rows);
+  }).catch(error => {
+    console.log('Failed to get all the genres');
+    res.sendStatus(500);
+  })
 });
 
 module.exports = router;
