@@ -3,3 +3,38 @@
     flex-wrap: wrap;
 }
 
+.add-search-form {
+    width: 50%;
+    margin: 0 auto;
+    background: #03a9f4;
+    box-shadow: 3px 4px 11px -2px white;
+    padding: 15px;
+    border-radius: 9px;
+}
+
+.movie-details {
+    width: 50%;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
+
+.bg-light {
+    background-color: #adb5bd2e !important;
+}
+
+.navbar-light .navbar-brand {
+    color: #f44336;
+}
+
+a {
+    color: #00bc8c;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+.navbar {
+    margin-bottom: 25px;
+}

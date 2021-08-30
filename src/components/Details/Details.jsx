@@ -14,30 +14,34 @@ function Details() {
     const goBackHome = () => {
         history.push('/');
     }
-    
+
     useEffect(() => {
         dispatch({ type: 'FETCH_INDIVIDUAL_GENRES', payload: {id: movieId.id}});
     }, []);
 
     return (
         <div className="movie-container">
-            {details.data?.map(movie => {
-                return (
-                    <div key={movie.title} >
-                        <h3>{movie.title}</h3>
-                        <h3>{movie.poster}</h3>
-                        <h3>{movie.description}</h3>
-                    </div>
-                );  
-            })}
-            {genres?.map(genre => {
-                return (
-                    <div key={genre.name}>
-                        {genre.name}
-                    </div>
-                );  
-            })}  
-            <button onClick={goBackHome}>GO BACK TO MOVIE LIST</button> 
+            <div className="movie-details">
+                {details.data?.map(movie => {
+                        return (
+                            <div key={movie.title} >
+                                <div>{movie.title}</div>
+                                <div>{movie.description}</div>
+                            </div>
+                        );  
+                    })}
+            </div>
+            <div className="movie-details">
+                <h3>Genres</h3>
+                {genres?.map(genre => {
+                    return (
+                        <div key={genre.name}>
+                            {genre.name}
+                        </div>
+                    );  
+                })} 
+            </div>
+            <button className="btn btn-primary" onClick={goBackHome}>GO BACK TO MOVIE LIST</button> 
         </div>
         
     );
